@@ -1,0 +1,29 @@
+{
+  "name": "fastify-brickset",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node index.js | pino-pretty"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexmanzo/fastify-brickset.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexmanzo/fastify-brickset/issues"
+  },
+  "homepage": "https://github.com/alexmanzo/fastify-brickset#readme",
+  "dependencies": {
+    "fastify": "^4.25.2",
+    "pino-pretty": "^10.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.6",
+    "typescript": "^5.3.3"
+  }
+}
