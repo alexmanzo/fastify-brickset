@@ -15,6 +15,21 @@ fastify.get('/', function (request, reply) {
   reply.send('cool!')
 });
 
+// brickset login
+// checkKey
+// checkUserHash
+
+// getSets
+// getSets Params: setId, query, theme, subtheme, setNumber, year, tag, owned, wanted, updatedSince, orderBy, pageSize, pageNumber, extendedData
+// getThemes
+// getSubthemes (for a given theme)
+// getYears (for a given theme)
+
+// setCollection
+// setCollection Params: own, want, qtyOwned, notes, rating
+// getUserNotes
+
+
 fastify.listen({ port }, (err, address) => {
   if (err) {
     fastify.log.error(err);
