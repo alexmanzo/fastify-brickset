@@ -1,5 +1,6 @@
+import { AxiosRequestConfig } from 'axios';
 import Fastify from 'fastify';
-import fastifySoapClient from '@fastify/soap-client';
+import fastifyAxios from './plugins/axios';
 
 const fastify = Fastify({
   logger: true,
@@ -7,12 +8,20 @@ const fastify = Fastify({
 const port = Number(process.env.PORT) || 3000;
 
 // plugins from ecosystem
+
 // custom plugins
+fastify.register(fastifyAxios, {
+  baseURL: 'https://brickset.com/api/v3.asmx',
+});
+
 // decorators
 // hooks
 // my services
-fastify.get('/', function (request, reply) {
-  reply.send('cool!')
+fastify.get<{ Querystring: GetSetsParams }>('/sets', async function (request, reply) {
+  const stringifiedParams = JSON.stringify(request.query);
+  // fastify.log.info(`stringifiedParams: ${stringifiedParams}`);
+  // const bricksetRequest = request.axios.get('/getSets', { params: { userHash: '', params: `{'year':'2020','orderBy':'Pieces','pageSize':100}` }});
+  reply.send(stringifiedParams);
 });
 
 // brickset login
@@ -28,7 +37,6 @@ fastify.get('/', function (request, reply) {
 // setCollection
 // setCollection Params: own, want, qtyOwned, notes, rating
 // getUserNotes
-
 
 fastify.listen({ port }, (err, address) => {
   if (err) {
